@@ -6,7 +6,7 @@
 /*   By: astavre <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 12:30:50 by astavre           #+#    #+#             */
-/*   Updated: 2017/09/04 17:19:12 by astavre          ###   ########.fr       */
+/*   Updated: 2017/09/05 10:43:48 by astavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ void Max(matrice M[R][C])
 			}
 			if (M[r][c] == 1)
 			{
+				
+				//printf("%c", 'A');
+				
 				S[r][c] = min(S[r][c-1], S[r-1][c], S[r-1][c-1]) + 1;
 				if (max < S[r][c])
 				{
@@ -92,7 +95,7 @@ void Max(matrice M[R][C])
 	subst_c_max = c_max;
 	stop_r = r_max - max;
 	stop_c = c_max - max;
-	//printf("%c", 'A');
+	
 
     while(r_max != stop_r)
     {
@@ -104,40 +107,6 @@ void Max(matrice M[R][C])
         c_max = subst_c_max;
         r_max--;
     }
-
-		//printf("%c", 'A');
-		while(c != C)
-		{
-	 		if (S[r][c] == max)
-			{
-               int stop;
-               //int c_stop;
-               int subst_c;
-               subst_c = c;
-               stop = r - (r - max);
-               //c_stop = c - (c - max);
-               while(stop != r)
-                {
-                    printf("%c", 'A');
-                    while(stop != subst_c)
-                    {
-                    //    S[r][subst_c] = 9;
-                        subst_c--;
-                    }
-                    subst_c = c;
-                    r--;
-                }
-			}
-			//else
-			//{
-				c++;
-	   		//}
-		}
-
-	 	c = 0;
-	    r++;
-
-
 
 // printeaza matricea
 	r = 0;
@@ -156,12 +125,12 @@ void Max(matrice M[R][C])
 }
 int main()
 {
-	matrice M[R][C] = {{0, 0, 1, 0, 1},
+	matrice M[R][C] = {{1, 1, 1, 1, 0},
 		            {1, 1, 1, 1, 1},
-		            {0, 0, 1, 1, 1},
-		            {1, 1, 1, 0, 1},
-		            {1, 1, 1, 1, 1},
-		            {0, 0, 0, 0, 0}};
+		            {1, 1, 1, 1, 0},
+		            {0, 1, 0, 0, 0},
+		            {1, 1, 0, 1, 0},
+		            {1, 1, 0, 0, 0}};
 	Max(M);
     return 0;
 }
